@@ -1,0 +1,494 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+  .fb-wrap {
+    background: #0a0a0f;
+    color: #f0eee8;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .fb-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(10,10,15,0.95);
+  }
+
+  .fb-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #e8c97a;
+  }
+
+  .fb-logo span {
+    color: #f0eee8;
+  }
+
+  .fb-nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fb-nav-links li {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(240,238,232,0.5);
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .fb-nav-links li.active {
+    color: #e8c97a;
+  }
+
+  .fb-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .fb-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 6px 14px;
+  }
+
+  .fb-search-box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #f0eee8;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    width: 130px;
+  }
+
+  .fb-search-box input::placeholder {
+    color: rgba(240,238,232,0.3);
+  }
+
+  .fb-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e8c97a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0a0a0f;
+  }
+
+  .fb-hero {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(to right, #0a0a0f 30%, transparent), 
+                url('https://image.tmdb.org/t/p/w1280/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg') center/cover;
+  }
+
+  .fb-hero-content {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+  }
+
+  .fb-hero-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e8c97a;
+    margin-bottom: 8px;
+  }
+
+  .fb-hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .fb-hero-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: rgba(240,238,232,0.5);
+    margin-bottom: 16px;
+  }
+
+  .fb-hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .fb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  .fb-btn-gold {
+    background: #e8c97a;
+    color: #0a0a0f;
+    border: none;
+  }
+
+  .fb-btn-ghost {
+    background: transparent;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    color: #f0eee8;
+    margin-left: 8px;
+  }
+
+  .fb-section {
+    padding: 24px 24px 8px;
+  }
+
+  .fb-section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .fb-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #f0eee8;
+  }
+
+  .fb-section-link {
+    font-size: 12px;
+    color: #e8c97a;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+
+  .fb-carousel {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scrollbar-width: none;
+  }
+
+  .fb-carousel::-webkit-scrollbar { display: none; }
+
+  .fb-card {
+    flex: 0 0 130px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .fb-card img {
+    width: 130px;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .fb-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 8px 8px;
+    background: linear-gradient(to top, rgba(10,10,15,0.95), transparent);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .fb-card-title {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+
+  .fb-card-rating {
+    font-size: 10px;
+    color: #e8c97a;
+  }
+
+  .fb-card-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #e8c97a;
+    color: #0a0a0f;
+    font-size: 9px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .fb-genre-pills {
+    display: flex;
+    gap: 8px;
+    padding: 0 24px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .fb-genre-pills::-webkit-scrollbar { display: none; }
+
+  .fb-pill {
+    flex: 0 0 auto;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    border: 0.5px solid rgba(255,255,255,0.12);
+    color: rgba(240,238,232,0.6);
+    background: rgba(255,255,255,0.04);
+    white-space: nowrap;
+  }
+
+  .fb-pill.active {
+    background: #e8c97a;
+    color: #0a0a0f;
+    border-color: #e8c97a;
+    font-weight: 500;
+  }
+
+  .fb-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    padding: 0 24px 24px;
+  }
+
+  .fb-grid-card {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .fb-grid-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fb-grid-info {
+    padding: 8px 0 4px;
+  }
+
+  .fb-grid-title {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fb-grid-sub {
+    font-size: 10px;
+    color: rgba(240,238,232,0.4);
+  }
+
+  .fb-divider {
+    height: 0.5px;
+    background: rgba(255,255,255,0.06);
+    margin: 0 24px;
+  }
+
+  .fb-bucket-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(10,10,15,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+</style>
+
+<div class="fb-wrap">
+  <nav class="fb-nav">
+    <div class="fb-logo">Film<span>Bucket</span></div>
+    <ul class="fb-nav-links">
+      <li class="active">Home</li>
+      <li>Movies</li>
+      <li>Genres</li>
+      <li>My Bucket</li>
+    </ul>
+    <div class="fb-nav-right">
+      <div class="fb-search-box">
+        <i class="ti ti-search" style="font-size:14px; color:rgba(240,238,232,0.3)" aria-hidden="true"></i>
+        <input type="text" placeholder="Search films..." />
+      </div>
+      <div class="fb-avatar">SA</div>
+    </div>
+  </nav>
+
+  <div class="fb-hero">
+    <div class="fb-hero-content">
+      <div class="fb-hero-label">🎬 Featured tonight</div>
+      <div class="fb-hero-title">Inception</div>
+      <div class="fb-hero-meta">
+        <span>⭐ 8.8</span>
+        <span>2010</span>
+        <span>Action · Sci-Fi</span>
+        <span>148 min</span>
+      </div>
+      <button class="fb-btn fb-btn-gold"><i class="ti ti-plus" aria-hidden="true"></i> Add to Bucket</button>
+      <button class="fb-btn fb-btn-ghost"><i class="ti ti-info-circle" aria-hidden="true"></i> Details</button>
+    </div>
+  </div>
+
+  <div class="fb-section">
+    <div class="fb-section-header">
+      <div class="fb-section-title">Trending Now</div>
+      <div class="fb-section-link">See all →</div>
+    </div>
+  </div>
+
+  <div class="fb-carousel" style="padding: 0 24px 20px;">
+    <div class="fb-card">
+      <div class="fb-card-badge">🔥 Hot</div>
+      <img src="https://image.tmdb.org/t/p/w300/9cqNxx0GxF0bAY0QLLsmbLneBnk.jpg" alt="Oppenheimer" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">Oppenheimer</div>
+        <div class="fb-card-rating">★ 8.1</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+    <div class="fb-card">
+      <img src="https://image.tmdb.org/t/p/w300/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="Interstellar" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">Interstellar</div>
+        <div class="fb-card-rating">★ 8.6</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+    <div class="fb-card">
+      <img src="https://image.tmdb.org/t/p/w300/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="Fight Club" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">Fight Club</div>
+        <div class="fb-card-rating">★ 8.4</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+    <div class="fb-card">
+      <img src="https://image.tmdb.org/t/p/w300/3bhkrj58Vtu7enYsLMd87OH14Uk.jpg" alt="The Godfather" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">The Godfather</div>
+        <div class="fb-card-rating">★ 9.2</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+    <div class="fb-card">
+      <img src="https://image.tmdb.org/t/p/w300/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Dark Knight" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">The Dark Knight</div>
+        <div class="fb-card-rating">★ 9.0</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+    <div class="fb-card">
+      <img src="https://image.tmdb.org/t/p/w300/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg" alt="Inception" />
+      <div class="fb-card-overlay">
+        <div class="fb-card-title">Inception</div>
+        <div class="fb-card-rating">★ 8.8</div>
+      </div>
+      <div class="fb-bucket-icon">＋</div>
+    </div>
+  </div>
+
+  <div class="fb-divider"></div>
+
+  <div class="fb-section" style="padding-bottom: 12px;">
+    <div class="fb-section-header">
+      <div class="fb-section-title">Browse by Genre</div>
+    </div>
+  </div>
+
+  <div class="fb-genre-pills">
+    <div class="fb-pill active">All</div>
+    <div class="fb-pill">Action</div>
+    <div class="fb-pill">Drama</div>
+    <div class="fb-pill">Sci-Fi</div>
+    <div class="fb-pill">Thriller</div>
+    <div class="fb-pill">Horror</div>
+    <div class="fb-pill">Comedy</div>
+    <div class="fb-pill">Romance</div>
+    <div class="fb-pill">Animation</div>
+    <div class="fb-pill">Documentary</div>
+  </div>
+
+  <div class="fb-grid">
+    <div class="fb-grid-card">
+      <img src="https://image.tmdb.org/t/p/w300/9cqNxx0GxF0bAY0QLLsmbLneBnk.jpg" alt="Oppenheimer" />
+      <div class="fb-grid-info">
+        <div class="fb-grid-title">Oppenheimer</div>
+        <div class="fb-grid-sub">★ 8.1 · 2023</div>
+      </div>
+    </div>
+    <div class="fb-grid-card">
+      <img src="https://image.tmdb.org/t/p/w300/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="Interstellar" />
+      <div class="fb-grid-info">
+        <div class="fb-grid-title">Interstellar</div>
+        <div class="fb-grid-sub">★ 8.6 · 2014</div>
+      </div>
+    </div>
+    <div class="fb-grid-card">
+      <img src="https://image.tmdb.org/t/p/w300/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="Fight Club" />
+      <div class="fb-grid-info">
+        <div class="fb-grid-title">Fight Club</div>
+        <div class="fb-grid-sub">★ 8.4 · 1999</div>
+      </div>
+    </div>
+    <div class="fb-grid-card">
+      <img src="https://image.tmdb.org/t/p/w300/3bhkrj58Vtu7enYsLMd87OH14Uk.jpg" alt="The Godfather" />
+      <div class="fb-grid-info">
+        <div class="fb-grid-title">The Godfather</div>
+        <div class="fb-grid-sub">★ 9.2 · 1972</div>
+      </div>
+    </div>
+    <div class="fb-grid-card">
+      <img src="https://image.tmdb.org/t/p/w300/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Dark Knight" />
+      <div class="fb-grid-info">
+        <div class="fb-grid-title">The Dark Knight</div>
+        <div class="fb-grid-sub">★ 9.0 · 2008</div>
+      </div>
+    </div>
+  </div>
+</div>

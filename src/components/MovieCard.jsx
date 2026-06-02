@@ -4,7 +4,7 @@ const MovieCard = ({movie, variant}) => {
         
         return (
 
-             <div className=" relative card mb-3 w-[180px] rounded-[10px] flex-shrink-0" >
+             <div className=" relative card mb-3 w-[150px] rounded-[10px] flex-shrink-0" >
                 <i className="ti ti-plus ti-2xl absolute right-3 top-3 w-7 h-7 rounded-full flex items-center justify-center text-white cursor-pointer bg-[rgba(10,10,15,0.9)]"></i>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className="w-full object-cover rounded-lg" />
                     <p className="text-[0.9rem] text-cream font-bold cursor-pointer">{movie.title}</p>

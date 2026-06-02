@@ -1,27 +1,8 @@
 import {useState, useEffect} from "react";
+import Genres from "../data/genres";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
-const GENRES = {
-  28: 'Action',
-  12: 'Adventure',
-  16: 'Animation',
-  35: 'Comedy',
-  80: 'Crime',
-  99: 'Documentary',
-  18: 'Drama',
-  10751: 'Family',
-  14: 'Fantasy',
-  36: 'History',
-  27: 'Horror',
-  10402: 'Music',
-  9648: 'Mystery',
-  10749: 'Romance',
-  878: 'Sci-Fi',
-  10770: 'TV Movie',
-  53: 'Thriller',
-  10752: 'War',
-  37: 'Western',
-}
+
 
 const Hero = ({featured, loading}) => {
 
@@ -56,7 +37,7 @@ const Hero = ({featured, loading}) => {
                         <span className="">{featured[currentIndex].vote_average.toFixed(1)}</span>
                     </div>
                     <span className="">{featured[currentIndex].release_date.slice(0, 4)}</span>
-                    <span className="">{featured[currentIndex].genre_ids.slice(0, 3).map(id => GENRES[id]).join(' · ')}</span>
+                    <span className="">{featured[currentIndex].genre_ids.slice(0, 3).map(id => Genres[id]).join(' · ')}</span>
                 </div>
 
                 <div className="flex items-center gap-3">

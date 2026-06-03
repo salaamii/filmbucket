@@ -5,11 +5,13 @@ import MovieGrid from "./components/Moviegrid";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
+import { useNavigate } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 function App () {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
    const [trending, setTrending] = useState([]);
@@ -28,6 +30,7 @@ function App () {
       const data = await res.json();
 
       setMovies(data.results);
+      navigate('/')
 
       console.log(data.results);
 
@@ -55,6 +58,7 @@ function App () {
 
   return (
     <div className="bg-bg">
+      
       <Navbar onSearch={searchMovies} onHome={goHome}/>
       <Routes>
           <Route path="/" element={ 

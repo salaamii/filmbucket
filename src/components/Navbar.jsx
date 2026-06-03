@@ -1,12 +1,13 @@
 import SearchBar from "./Searchbar"
+import { Link } from "react-router-dom"
 
 const Navbar = ({onSearch, onHome})=> {
 
     return (
         <nav className="flex justify-between items-center border-b px-4 py-4">
-            <header className="font-heading text-gold text-[1.2rem] lg:text-[2rem]">FILM<span className="text-cream cursor-pointer" onClick={onHome}>BUCKET</span></header>
+           <Link to="/"><header className="font-heading text-gold text-[1.2rem] lg:text-[2rem]">FILM<span className="text-cream cursor-pointer">BUCKET</span></header></Link>
             <ul className="hidden lg:flex gap-4 uppercase font-body text-[1rem] text-cream">
-                <li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li>
+              <Link to="/"><li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li></Link>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">CinemaNow</li>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">Genres</li>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">Bucket</li>

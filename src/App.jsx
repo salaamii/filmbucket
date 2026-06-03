@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import {Routes, Route} from 'react-router-dom';
 import SearchBar from "./components/Searchbar";
 import MovieGrid from "./components/Moviegrid";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import MovieDetails from "./components/MovieDetails";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -54,8 +56,17 @@ function App () {
   return (
     <div className="bg-bg">
       <Navbar onSearch={searchMovies} onHome={goHome}/>
-      {movies.length === 0 && <Home featured={trending.slice(0,5)} trending={trending} loading={trendingLoading}/>}
-      {movies.length > 0 && <MovieGrid movies={movies} title="Search Results" layout="grid" />}
+      <Routes>
+          <Route path="/" element={ 
+            <>  
+              {movies.length === 0 && <Home featured={trending.slice(0,5)} trending={trending} loading={trendingLoading}/>}
+              {movies.length > 0 && <MovieGrid movies={movies} title="Search Results" layout="grid" />}
+
+            </>  
+
+          }/>
+          <Route path="/movie/:id" element={<MovieDetails/>}/>
+      </Routes>
     </div>  
   )
 

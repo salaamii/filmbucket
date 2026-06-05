@@ -1,10 +1,13 @@
 import {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import Genres from "../data/genres";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
 
 
 const Hero = ({featured, loading}) => {
+
+    const navigate = useNavigate();
 
    
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,7 +45,7 @@ const Hero = ({featured, loading}) => {
 
                 <div className="flex items-center gap-3">
                     <button className="bg-gold text-black px-4 py-2 rounded-[20px] border border-gold hover:bg-black hover:text-cream transition-colors duration-200">Add to bucket</button>
-                    <button className="border border-gold text-white px-4 py-2 hover:bg-gold hover:text-black transition-colors duration-200 rounded-[20px]">Details</button>
+                    <button className="border border-gold text-white px-4 py-2 hover:bg-gold hover:text-black transition-colors duration-200 rounded-[20px]" onClick={()=> navigate(`/movie/${featured[currentIndex].id}`)}>Details</button>
                 </div>
             </div>
         </div>

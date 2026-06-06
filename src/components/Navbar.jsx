@@ -34,7 +34,7 @@ const Navbar = ({onSearch, onHome})=> {
                         <i className="ti ti-x"></i>
                     </button>
                     <ul className="flex flex-col gap-6 uppercase font-body text-cream text-lg">
-                        <li className="hover:text-gold cursor-pointer" onClick={() => { onHome(); setMenuOpen(false) }}>Home</li>
+                      <Link to="/"><li className="hover:text-gold cursor-pointer" onClick={() => { onHome(); setMenuOpen(false) }}>Home</li></Link>
                         <li className="hover:text-gold cursor-pointer">CinemaNow</li>
                         <li className="hover:text-gold cursor-pointer">Genres</li>
                        <Link to="/bucket"><li className="hover:text-gold cursor-pointer" onClick={() => setMenuOpen(false)}>Bucket</li></Link>

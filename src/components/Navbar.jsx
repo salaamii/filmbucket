@@ -12,8 +12,8 @@ const Navbar = ({onSearch, onHome})=> {
            <Link to="/"><img className="h-[4rem] w-full" src="/fb_header.svg" alt="" /></Link>
             <ul className="hidden lg:flex gap-4 uppercase font-body text-[1rem] text-cream">
               <Link to="/"><li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li></Link>
-                <li className="hover:text-gold cursor-pointer transition-colors duration-200">CinemaNow</li>
-                <li className="hover:text-gold cursor-pointer transition-colors duration-200">Genres</li>
+               <Link to="/cinemaNow"><li className="hover:text-gold cursor-pointer transition-colors duration-200">CinemaNow</li></Link>
+                
                <Link to="/bucket"><li className="hover:text-gold cursor-pointer transition-colors duration-200">Bucket</li></Link>
             </ul>
             <div className="hidden lg:flex items-center gap-3">
@@ -35,8 +35,7 @@ const Navbar = ({onSearch, onHome})=> {
                     </button>
                     <ul className="flex flex-col gap-6 uppercase font-body text-cream text-lg">
                       <Link to="/"><li className="hover:text-gold cursor-pointer" onClick={() => { onHome(); setMenuOpen(false) }}>Home</li></Link>
-                        <li className="hover:text-gold cursor-pointer">CinemaNow</li>
-                        <li className="hover:text-gold cursor-pointer">Genres</li>
+                       <Link to="/cinemaNow"><li className="hover:text-gold cursor-pointer">CinemaNow</li></Link>
                        <Link to="/bucket"><li className="hover:text-gold cursor-pointer" onClick={() => setMenuOpen(false)}>Bucket</li></Link>
                     </ul>
                     <SearchBar onSearch= {(query) => {onSearch(query); setMenuOpen(false) }}/>

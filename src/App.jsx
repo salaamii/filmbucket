@@ -3,9 +3,11 @@ import {Routes, Route} from 'react-router-dom';
 import MovieGrid from "./components/Moviegrid";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Cinema from "./components/Cinema";
 import MovieDetails from "./components/MovieDetails";
 import { useNavigate } from "react-router-dom";
 import BucketList from "./components/bucket";
+import Footer from "./components/footer";
 
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -73,8 +75,10 @@ function App () {
           }/>
           <Route path="/movie/:id" element={<MovieDetails />}/>
           <Route path="/bucket" element={<BucketList />}/>
+          <Route path="/cinemaNow" element={<Cinema />}/>
           
       </Routes>
+      <Footer/>
     </div>  
   )
 

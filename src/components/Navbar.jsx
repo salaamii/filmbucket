@@ -9,7 +9,7 @@ const Navbar = ({onSearch, onHome})=> {
     return (
       <>  
         <nav className="flex justify-between items-center border-b px-4 py-4">
-           <Link to="/"><img className="h-20 w-full" src="/fb_header.svg" alt="" /></Link>
+           <Link to="/"><img className="h-[4rem] w-full" src="/fb_header.svg" alt="" /></Link>
             <ul className="hidden lg:flex gap-4 uppercase font-body text-[1rem] text-cream">
               <Link to="/"><li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li></Link>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">CinemaNow</li>

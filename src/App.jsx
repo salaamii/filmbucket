@@ -16,6 +16,7 @@ function App () {
   const [error, setError] = useState(null);
    const [trending, setTrending] = useState([]);
     const [trendingLoading, setTrendingLoading] = useState(true);
+    const [bucket, setBucket] = useState([]);
 
   const goHome = ()=> setMovies([]);
 
@@ -56,6 +57,17 @@ function App () {
       }, [])
 
 
+      // ADD TO BUCKET
+
+      const addToBucket = (movie)=> {
+        setBucket(prev => prev.some(m=> m.id === movie.id)
+        ? prev.filter(m => m.id !== movie.id)
+        : [...prev, movie])
+
+        console.log(bucket);
+      }
+
+
   return (
     <div className="bg-bg">
       
@@ -63,13 +75,13 @@ function App () {
       <Routes>
           <Route path="/" element={ 
             <>  
-              {movies.length === 0 && <Home featured={trending.slice(0,5)} trending={trending} loading={trendingLoading}/>}
+              {movies.length === 0 && <Home featured={trending.slice(0,5)} toBucket={addToBucket} bucket={bucket} trending={trending} loading={trendingLoading}/>}
               {movies.length > 0 && <MovieGrid movies={movies} title="Search Results" layout="grid" />}
 
             </>  
 
           }/>
-          <Route path="/movie/:id" element={<MovieDetails/>}/>
+          <Route path="/movie/:id" element={<MovieDetails toBucket={addToBucket} bucket={bucket}/>}/>
       </Routes>
     </div>  
   )

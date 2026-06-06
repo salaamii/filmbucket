@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import MovieGrid from './Moviegrid';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
-const MovieDetails = ()=> {
+const MovieDetails = ({toBucket, bucket})=> {
 
     const [details, setDetails] = useState(null);
     const [detailLoad, setDetailLoad] = useState(false);
     const [similar, setSimilar] = useState([]);
     const {id} = useParams();
+    const isInBucket = bucket?.some(m => m.id === details?.id) ?? false
 
     useEffect(()=> {
         const movieFetch = async () => {
@@ -65,7 +66,7 @@ const MovieDetails = ()=> {
                             ))}
                         </div>
                         <p className="text-[1rem] text-cream/80 max-w-2xl">{details.overview}</p>
-                        <button className="w-fit bg-gold text-bg font-bold px-5 py-2 rounded-lg mt-2">+ Add to Bucket</button>
+                        <button onClick={()=> toBucket(details)} className={isInBucket ? "bg-green-700 text-white w-fit font-bold px-5 py-2 rounded-lg mt-2" : "w-fit bg-gold text-bg font-bold px-5 py-2 rounded-lg mt-2"}>{isInBucket ? "✓ Added to Bucket" : "+ Add to Bucket"}</button>
                     </div>
                 </div>
             </div>

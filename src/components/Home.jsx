@@ -5,7 +5,7 @@ import GenreSection from "./genreSection";
 
 import Hero from "./Hero";
 
-const Home = ({featured, loading, trending})=> {
+const Home = ({featured, loading, trending, toBucket, bucket})=> {
 
     return (
       <>  
@@ -14,7 +14,7 @@ const Home = ({featured, loading, trending})=> {
                     <div className="w-12 h-12 rounded-full border-4 border-gold/20 border-t-gold animate-spin"/>
                 </div>
             )}
-            <Hero featured={featured} loading={loading}/>
+            <Hero featured={featured} loading={loading} toBucket={toBucket} bucket={bucket}/>
             <MovieGrid movies={trending} title="Trending Now" layout="carousel" variant='carousel'/>
             <GenreSection trending={trending}/>
       </>  

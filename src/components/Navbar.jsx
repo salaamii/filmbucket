@@ -2,22 +2,23 @@ import { useState } from "react"
 import SearchBar from "./Searchbar"
 import { Link } from "react-router-dom"
 
+
 const Navbar = ({onSearch, onHome})=> {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
       <>  
         <nav className="flex justify-between items-center border-b px-4 py-4">
-           <Link to="/"><header className="font-heading text-gold text-[1.2rem] lg:text-[2rem]">FILM<span className="text-cream cursor-pointer">BUCKET</span></header></Link>
+           <Link to="/"><img className="h-20 w-full" src="/fb_header.svg" alt="" /></Link>
             <ul className="hidden lg:flex gap-4 uppercase font-body text-[1rem] text-cream">
               <Link to="/"><li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li></Link>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">CinemaNow</li>
                 <li className="hover:text-gold cursor-pointer transition-colors duration-200">Genres</li>
                <Link to="/bucket"><li className="hover:text-gold cursor-pointer transition-colors duration-200">Bucket</li></Link>
             </ul>
-            <div className="flex items-center gap-3 hidden lg:flex">
+            <div className="hidden lg:flex items-center gap-3">
                 <SearchBar onSearch={onSearch}/>
-                 <span className="bg-gold w-[40px] h-[40px] rounded-full  justify-center items-center font-bold cursor-pointer">SA</span>
+                 <span className="bg-gold w-[40px] h-[40px] flex items-center rounded-full  justify-center items-center font-bold cursor-pointer">SA</span>
             </div>
             {/* Hamburger button - mobile only */}
                 <button className="lg:hidden text-cream text-2xl" onClick={() => setMenuOpen(true)}>

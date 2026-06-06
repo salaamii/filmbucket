@@ -8,7 +8,7 @@ const Navbar = ({onSearch, onHome})=> {
 
     return (
       <>  
-        <nav className="flex justify-between items-center border-b lg:px-4 px-2 lg:py-4 py-1">
+        <nav className="sticky top-0 z-50 flex justify-between items-center border-b bg-bg lg:px-4 px-2 lg:py-4 py-1">
            <Link to="/"><img className="h-[4rem] w-full" src="/fb_header.svg" alt="" /></Link>
             <ul className="hidden lg:flex gap-4 uppercase font-body text-[1rem] text-cream">
               <Link to="/"><li className="hover:text-gold cursor-pointer transition-colors duration-200" onClick={onHome}>Home</li></Link>

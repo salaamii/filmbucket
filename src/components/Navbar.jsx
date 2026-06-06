@@ -39,7 +39,7 @@ const Navbar = ({onSearch, onHome})=> {
                         <li className="hover:text-gold cursor-pointer">Genres</li>
                        <Link to="/bucket"><li className="hover:text-gold cursor-pointer" onClick={() => setMenuOpen(false)}>Bucket</li></Link>
                     </ul>
-                    <SearchBar onSearch={onSearch}/>
+                    <SearchBar onSearch= {(query) => {onSearch(query); setMenuOpen(false) }}/>
 
                 </div>
         

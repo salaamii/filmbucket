@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import {Routes, Route} from 'react-router-dom';
-import SearchBar from "./components/Searchbar";
 import MovieGrid from "./components/Moviegrid";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
 import { useNavigate } from "react-router-dom";
+import BucketList from "./components/bucket";
+
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -15,8 +16,7 @@ function App () {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
    const [trending, setTrending] = useState([]);
-    const [trendingLoading, setTrendingLoading] = useState(true);
-    const [bucket, setBucket] = useState([]);
+    const [trendingLoading, setTrendingLoading] = useState(true); 
 
   const goHome = ()=> setMovies([]);
 
@@ -57,16 +57,6 @@ function App () {
       }, [])
 
 
-      // ADD TO BUCKET
-
-      const addToBucket = (movie)=> {
-        setBucket(prev => prev.some(m=> m.id === movie.id)
-        ? prev.filter(m => m.id !== movie.id)
-        : [...prev, movie])
-
-        console.log(bucket);
-      }
-
 
   return (
     <div className="bg-bg">
@@ -75,13 +65,15 @@ function App () {
       <Routes>
           <Route path="/" element={ 
             <>  
-              {movies.length === 0 && <Home featured={trending.slice(0,5)} toBucket={addToBucket} bucket={bucket} trending={trending} loading={trendingLoading}/>}
+              {movies.length === 0 && <Home featured={trending.slice(0,5)} trending={trending} loading={trendingLoading}/>}
               {movies.length > 0 && <MovieGrid movies={movies} title="Search Results" layout="grid" />}
 
             </>  
 
           }/>
-          <Route path="/movie/:id" element={<MovieDetails toBucket={addToBucket} bucket={bucket}/>}/>
+          <Route path="/movie/:id" element={<MovieDetails />}/>
+          <Route path="/bucket" element={<BucketList />}/>
+          
       </Routes>
     </div>  
   )

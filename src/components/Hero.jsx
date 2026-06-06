@@ -1,14 +1,15 @@
 import {useState, useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
+import { useBucket } from "../context/BucketContext";
 import Genres from "../data/genres";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
 
 
-const Hero = ({featured, loading, toBucket, bucket}) => {
+const Hero = ({featured, loading,}) => {
 
     const navigate = useNavigate();
-       
+    const {bucket, addToBucket} = useBucket()
    
     const [currentIndex, setCurrentIndex] = useState(0);
      const isInBucket = bucket?.some(m => m.id === featured[currentIndex]?.id) ?? false
@@ -59,7 +60,7 @@ const Hero = ({featured, loading, toBucket, bucket}) => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                        <button onClick={()=> toBucket(featured[currentIndex])} className={isInBucket ? "bg-green-700 text-white w-fit font-bold px-5 py-2 rounded-lg mt-2" : "w-fit bg-gold text-bg font-bold px-5 py-2 rounded-lg mt-2"}>{isInBucket ? "✓ Added to Bucket" : "+ Add to Bucket"}</button>
+                        <button onClick={()=> addToBucket(featured[currentIndex])} className={isInBucket ? "bg-green-700 text-white w-fit font-bold px-5 py-2 rounded-lg mt-2" : "w-fit bg-gold text-bg font-bold px-5 py-2 rounded-lg mt-2"}>{isInBucket ? "✓ Added to Bucket" : "+ Add to Bucket"}</button>
                     <button className="border border-gold text-white px-4 py-2 hover:bg-gold hover:text-black transition-colors duration-200 rounded-[20px]" onClick={()=> navigate(`/movie/${featured[currentIndex].id}`)}>Details</button>
                 </div>
             </div>
